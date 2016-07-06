@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from class1 import views
+from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^class1/$', views.student_list),
+    url(r'^class1/(?P<pk>[0-9]+)$', views.student_detail),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
